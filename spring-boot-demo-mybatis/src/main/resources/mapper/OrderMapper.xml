@@ -4,4 +4,11 @@
     <select id="selectOrderAll" resultType="io.me.bean.Order">
         select * from trade_order
     </select>
+
+    <insert id="addOrder" parameterType="io.me.bean.Order">
+        INSERT INTO trade_order (user_id, user_name, phone, address, total_price)
+        VALUES(#{userId}, #{userName}, #{phone}, #{address}, #{totalPrice});
+    </insert>
+
+
 </mapper>

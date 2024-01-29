@@ -14,4 +14,6 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
     List<Order> selectOrderAll();
+
+    Integer addOrder(Order order);
 }
