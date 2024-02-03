@@ -3,13 +3,12 @@
 <mapper namespace="io.adam.mapper.OrderMapper">
 
     <sql id="Base_Column_List">
-        user_id, user_name, phone, address, total_price
+        id, user_id, user_name, phone, address, total_price
     </sql>
     <select id="selectOrderAll" resultType="io.adam.bean.Order" parameterType="io.adam.bean.Order">
         select
         <include refid="Base_Column_List"/>
         from trade_order
-
     </select>
 
     <insert id="addOrder" parameterType="io.adam.bean.Order">
