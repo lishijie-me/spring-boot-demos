@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加订单</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div style="width:800px;height:100%;margin-left:270px;">
+    <form action="/insert" method="post">
+        用户ID：<input class="form-control" type="text" th:value="${userId}" name="userId"><br>
+        用户名：<input class="form-control" type="text" th:value="${userName}" name="userName"><br>
+        联系电话：<input class="form-control" type="text" th:value="${phone}" name="phone"><br>
+        联系地址：<input class="form-control" type="text" th:value="${address}" name="address"><br>
+        订单总价：<input class="form-control" type="text" th:value="${totalPrice}" name="totalPrice"><br>
+        <button class="btn btn-primary btn-lg btn-block">保存</button>
+    </form>
+</div>
+
+</body>
+</html>

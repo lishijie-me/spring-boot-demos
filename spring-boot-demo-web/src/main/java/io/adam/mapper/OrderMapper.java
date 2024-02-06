@@ -14,7 +14,7 @@ import java.util.List;
 @Mapper
 public interface OrderMapper {
     List<Order> selectOrderAll();
-    Order selectOrderById(Integer id);
+    Order selectOrderById(Long id);
 
     Integer addOrder(Order order);
 

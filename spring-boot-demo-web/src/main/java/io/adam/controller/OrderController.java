@@ -5,6 +5,7 @@ import io.adam.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class OrderController {
         return "orderList";
     }
 
-    @RequestMapping("/addOrder")
+    @RequestMapping("/insert")
     public String addOrder(Order order){
         Integer i = orderService.addOrder(order);
         if (i<0){
@@ -39,13 +40,25 @@ public class OrderController {
         return "redirect:/orderList";
     }
 
-    @RequestMapping("/updateOrder")
-    public String updateOrder(Order order){
-        Integer i = orderService.updateOrder(order);
-        if (i<0){
-            return "redirect:/error";
-        }
+    @RequestMapping("/updatePage/{id}")
+    public String updateOrder(Model model, @PathVariable Long id){
+        Order order = orderService.selectOrderById(id);
+        model.addAttribute("order", order);
         // 跳转到指定页面
         return "updatePage";
+    }
+
+    @RequestMapping("/update")
+    public String updateOrder(Order order){
+        Integer i = orderService.updateOrder(order);
+        System.out.println("修改订单信息为"+order);
+        // 跳转到指定页面
+        return "redirect:/orderList";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable Long id){
+        orderService.deleteOrder(id);
+        return "redirect:/orderList";
     }
 }

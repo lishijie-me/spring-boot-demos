@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface OrderService {
     List<Order> selectOrderAll();
-    Order selectOrderById(Integer id);
+    Order selectOrderById(Long id);
 
     Integer addOrder(Order order);
 
