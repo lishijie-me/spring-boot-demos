@@ -30,14 +30,17 @@ public class OrderController {
         return "orderList";
     }
 
+    @RequestMapping("/insertPage")
+    public String insert(){
+        // 跳转到指定页面
+        return "insertPage";
+    }
+
     @RequestMapping("/insert")
     public String addOrder(Order order){
         Integer i = orderService.addOrder(order);
-        if (i<0){
-            return "redirect:/error";
-        }
         // 跳转到指定页面
-        return "redirect:/orderList";
+        return "redirect:/selectOrderAll";
     }
 
     @RequestMapping("/updatePage/{id}")
@@ -53,12 +56,12 @@ public class OrderController {
         Integer i = orderService.updateOrder(order);
         System.out.println("修改订单信息为"+order);
         // 跳转到指定页面
-        return "redirect:/orderList";
+        return "redirect:/selectOrderAll";
     }
 
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable Long id){
         orderService.deleteOrder(id);
-        return "redirect:/orderList";
+        return "redirect:/selectOrderAll";
     }
 }

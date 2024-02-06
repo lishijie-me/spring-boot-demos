@@ -21,7 +21,7 @@ class SpringBootDemoWebApplicationTests {
 
     @Test
     void selectOrderById() {
-        Order order = orderService.selectOrderById(10);
+        Order order = orderService.selectOrderById(10L);
         System.out.println("根据ID查询成功"+order);
     }
 
