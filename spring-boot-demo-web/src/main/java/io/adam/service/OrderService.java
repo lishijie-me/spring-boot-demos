@@ -12,4 +12,11 @@ import java.util.List;
  */
 public interface OrderService {
     List<Order> selectOrderAll();
+    Order selectOrderById(Integer id);
+
+    Integer addOrder(Order order);
+
+    Integer updateOrder(Order order);
+
+    Integer deleteOrder(Long id);
 }

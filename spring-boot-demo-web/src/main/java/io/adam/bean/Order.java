@@ -42,4 +42,12 @@ public class Order {
      * 商品总价
      * */
     private BigDecimal totalPrice;
+
+    public Order(Long userId, String userName, String phone, String address, BigDecimal totalPrice) {
+        this.userId = userId;
+        this.userName = userName;
+        this.phone = phone;
+        this.address = address;
+        this.totalPrice = totalPrice;
+    }
 }

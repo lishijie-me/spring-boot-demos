@@ -29,5 +29,23 @@ public class OrderController {
         return "orderList";
     }
 
+    @RequestMapping("/addOrder")
+    public String addOrder(Order order){
+        Integer i = orderService.addOrder(order);
+        if (i<0){
+            return "redirect:/error";
+        }
+        // 跳转到指定页面
+        return "redirect:/orderList";
+    }
 
+    @RequestMapping("/updateOrder")
+    public String updateOrder(Order order){
+        Integer i = orderService.updateOrder(order);
+        if (i<0){
+            return "redirect:/error";
+        }
+        // 跳转到指定页面
+        return "updatePage";
+    }
 }
