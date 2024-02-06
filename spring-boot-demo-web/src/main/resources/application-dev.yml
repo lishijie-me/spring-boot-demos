@@ -58,6 +58,18 @@ spring:
         reset-enable: true
         #启用
         enabled: true
+  web:
+    resources:
+      static-locations: classpath:static/
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    # 默认开启缓存，测试关闭，方便实时查看效果
+    cache: false
 
 # Mybatis配置
 mybatis:
