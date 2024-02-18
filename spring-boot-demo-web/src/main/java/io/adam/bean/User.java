@@ -23,4 +23,11 @@ public class User {
     private String phoneNumber;
     private String eMail;
     private String address;
+
+    public User(String userName, String password, String phoneNumber, String eMail) {
+        this.userName = userName;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.eMail = eMail;
+    }
 }
