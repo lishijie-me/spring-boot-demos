@@ -1,7 +1,9 @@
 package io.adam;
 
 import io.adam.bean.Order;
+import io.adam.bean.Users;
 import io.adam.service.OrderService;
+import io.adam.service.UsersService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +15,7 @@ import java.util.List;
 class SpringBootDemoWebApplicationTests {
     @Autowired
     private OrderService orderService;
+
     @Test
     void selectOrderAll() {
         List<Order> orders = orderService.selectOrderAll();
@@ -44,6 +47,24 @@ class SpringBootDemoWebApplicationTests {
     void deleteOrder() {
         Integer i = orderService.deleteOrder(15L);
         System.out.println("删除成功"+i);
+    }
+
+
+
+    @Autowired
+    private UsersService usersService;
+
+    @Test
+    void login() {
+        // 正例
+//        Users users = new Users("曹操", "12345", "18812345678", "caocao@163.com");
+        // 只有密码
+//        Users users = new Users( "12345");
+        // 没有密码
+        Users users = new Users("曹操", "18812345678", "caocao@163.com");
+        Users login = usersService.login(users);
+        System.out.println("用户信息"+users);
+        System.out.println("登录结果"+login);
     }
 
 }

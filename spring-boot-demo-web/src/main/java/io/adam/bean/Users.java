@@ -15,19 +15,34 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Data
-public class User {
+public class Users {
     private Long id;
     private Long userId;
     private String userName;
     private String password;
     private String phoneNumber;
-    private String eMail;
+    private String email;
     private String address;
 
-    public User(String userName, String password, String phoneNumber, String eMail) {
+    public Users(String userName, String password, String phoneNumber, String email) {
         this.userName = userName;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.eMail = eMail;
+        this.email = email;
+    }
+
+    public Users(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public Users(String password) {
+        this.password = password;
+    }
+
+    public Users(String userName, String phoneNumber, String email) {
+        this.userName = userName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
     }
 }

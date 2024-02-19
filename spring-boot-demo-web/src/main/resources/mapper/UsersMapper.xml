@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.adam.mapper.UsersMapper">
+
+    <sql id="Base_Column_List">
+        id, user_id, user_name, password, phone_number, email, address
+    </sql>
+
+    <select id="login" resultType="io.adam.bean.Users" parameterType="io.adam.bean.Users">
+        select
+        <include refid="Base_Column_List"/>
+        from trade_users
+
+        where 1=1
+            <if test=" userName != null and userName != '' ">
+                and user_name = #{userName}
+            </if>
+            <if test=" phoneNumber != null and phoneNumber != '' ">
+                and phone_number = #{phoneNumber}
+            </if>
+            <if test=" email != null and email != '' ">
+                and email = #{email}
+            </if>
+
+    </select>
+</mapper>

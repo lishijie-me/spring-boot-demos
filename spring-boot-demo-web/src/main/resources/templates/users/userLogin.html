@@ -2,45 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>订单列表</title>
+    <title>用户登录</title>
     <link href="css/bootstrap.css" rel="stylesheet">
 </head>
-
-<style>
-    a{
-        color:#ffffff;
-    }
-</style>
-
 <body>
-<div></div>
-<button class="btn btn-primary form-control" style="height:50px"><a th:href="@{'/insertPage'}">添加订单</a></button>
-<table class="table table-striped table-bordered table-hover text-center">
-    <thead>
-    <tr style="text-align:center">
-        <th>订单ID</th>
-        <th>用户ID</th>
-        <th>用户名</th>
-        <th>商品总价</th>
-        <th>联系人电话</th>
-        <th>收货地址</th>
-        <th>操作</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="orders:${orders}">
-        <td th:text="${orders.id}"></td>
-        <td th:text="${orders.userId}"></td>
-        <td th:text="${orders.userName}"></td>
-        <td th:text="${orders.totalPrice}"></td>
-        <td th:text="${orders.phone}"></td>
-        <td th:text="${orders.address}"></td>
-        <td>
-            <a class="btn btn-primary" th:href="@{'/updatePage/'+${orders.id}}">更改</a>
-            <a class="btn btn-danger" th:href="@{'/delete/'+${orders.id}}">删除</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+<div style="width:800px;height:100%;margin-left:270px;">
+    <form action="/trade-web/update" method="post">
+        订单ID：<input class="form-control" name="id" type="text" th:value="${order.id}" readonly="readonly"><br>
+        用户名：<input class="form-control" type="text" th:value="${order.userName}" name="userName"><br>
+        联系电话：<input class="form-control" type="text" th:value="${order.phone}" name="phone"><br>
+        地址：<input class="form-control" type="text" th:value="${order.address}" name="address"><br>
+        订单总价：<input class="form-control" type="text" th:value="${order.totalPrice}" name="totalPrice"><br>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+    </form>
+</div>
 </body>
 </html>

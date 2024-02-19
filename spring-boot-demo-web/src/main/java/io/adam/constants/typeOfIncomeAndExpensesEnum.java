@@ -1,4 +1,4 @@
-package io.adam.commonenum;
+package io.adam.constants;
 
 /**
  * @author : 成行(lishijie-me)
