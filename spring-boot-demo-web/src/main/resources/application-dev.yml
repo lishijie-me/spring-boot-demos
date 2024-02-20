@@ -4,10 +4,10 @@ server:
     threads:
       max: 20
   servlet:
-    context-path: /trade-order
+    context-path: /trade-web
 spring:
   application:
-    name: server-trade-order
+    name: server-trade-web
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sca-trade?useSSL=false&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai

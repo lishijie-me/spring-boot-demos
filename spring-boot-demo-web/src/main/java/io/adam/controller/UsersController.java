@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Objects;
 
@@ -25,6 +24,10 @@ public class UsersController {
 
     @Autowired
     private UsersService usersService;
+    @RequestMapping("/index")
+    public String index(){
+        return "users/index";
+    }
 
     @RequestMapping("/login")
     @ResponseBody
@@ -53,4 +56,32 @@ public class UsersController {
 
         return result;
     }
+
+//    @RequestMapping("/login")
+//    @ResponseBody
+//    public Result<Users> login(@RequestBody Users users){
+//        Result<Users> result = null;
+//        if(StringUtils.isBlank(users.getUserName()) ||
+//                StringUtils.isBlank(users.getPhoneNumber()) ||
+//                StringUtils.isBlank(users.getEmail())
+//        ){
+//            // 用户名、电话、邮箱不能全为空
+//            result = new Result<>(HttpCode.FAILURE, "用户名、电话、邮箱不能全为空", null);
+//        }
+//
+//        if(StringUtils.isBlank(users.getPassword())){
+//            // 密码不能为空
+//            result = new Result<>(HttpCode.FAILURE, "密码不能为空", null);
+//        }
+//        Users login = usersService.login(users);
+//        if(Objects.isNull(login)){
+//            result = new Result<>(HttpCode.FAILURE, "用户信息不匹配，请重试或修改密码(注意上生产不能这么写)", null);
+//        }else if(!login.getPassword().equals(users.getPassword())){
+//            result = new Result<>(HttpCode.FAILURE, "密码不匹配，请重试或修改密码(注意上生产不能这么写)", null);
+//        }else {
+//            result = new Result<>(HttpCode.SUCCESS, "执行成功，登录成功", login);
+//        }
+//
+//        return result;
+//    }
 }

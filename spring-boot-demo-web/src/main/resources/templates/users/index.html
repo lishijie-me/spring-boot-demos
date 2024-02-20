@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+
+<div style="width:800px;height:100%;margin-left:270px;">
+    <form action="/trade-web/index" method="post">
+        User Login：<input class="form-control" type="text" th:value="${users.userName}" name="userName" placeholder="请输入用户名"><br>
+        密  码：<input class="form-control" type="password" th:value="${users.password}" name="password" placeholder="请输入密码"><br>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">提交</button>
+    </form>
+</div>
+</body>
+</html>
