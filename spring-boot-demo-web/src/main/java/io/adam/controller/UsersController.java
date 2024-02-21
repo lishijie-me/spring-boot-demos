@@ -19,42 +19,46 @@ import java.util.Objects;
  * @createTime : 2024/2/19 18:16
  * @description : 登录用户
  */
+@RequestMapping("/users")
 @Controller
 public class UsersController {
 
     @Autowired
     private UsersService usersService;
-    @RequestMapping("/index")
+    @RequestMapping("/login")
     public String index(){
-        return "users/index";
+        return "users/login";
     }
 
-    @RequestMapping("/login")
-    @ResponseBody
-    public Result<Users> login(@RequestBody Users users){
+    @RequestMapping("/doLogin")
+    public String doLogin(Users users){
         Result<Users> result = null;
-        if(StringUtils.isBlank(users.getUserName()) ||
-                StringUtils.isBlank(users.getPhoneNumber()) ||
+        if(StringUtils.isBlank(users.getUserName()) &&
+                StringUtils.isBlank(users.getPhoneNumber()) &&
                 StringUtils.isBlank(users.getEmail())
         ){
             // 用户名、电话、邮箱不能全为空
-            result = new Result<>(HttpCode.FAILURE, "用户名、电话、邮箱不能全为空", null);
+            return "login";
+//            result = new Result<>(HttpCode.FAILURE, "用户名、电话、邮箱不能全为空", null);
         }
 
         if(StringUtils.isBlank(users.getPassword())){
             // 密码不能为空
-            result = new Result<>(HttpCode.FAILURE, "密码不能为空", null);
+//            result = new Result<>(HttpCode.FAILURE, "密码不能为空", null);
+            return "login";
         }
         Users login = usersService.login(users);
         if(Objects.isNull(login)){
-            result = new Result<>(HttpCode.FAILURE, "用户信息不匹配，请重试或修改密码(注意上生产不能这么写)", null);
+//            result = new Result<>(HttpCode.FAILURE, "用户信息不匹配，请重试或修改密码(注意上生产不能这么写)", null);
+            return "login";
         }else if(!login.getPassword().equals(users.getPassword())){
-            result = new Result<>(HttpCode.FAILURE, "密码不匹配，请重试或修改密码(注意上生产不能这么写)", null);
+//            result = new Result<>(HttpCode.FAILURE, "密码不匹配，请重试或修改密码(注意上生产不能这么写)", null);
+            return "login";
         }else {
-            result = new Result<>(HttpCode.SUCCESS, "执行成功，登录成功", login);
+//            result = new Result<>(HttpCode.SUCCESS, "执行成功，登录成功", login);
+            return "redirect:/order/selectOrderAll";
         }
 
-        return result;
     }
 
 //    @RequestMapping("/login")

@@ -16,6 +16,7 @@ import java.util.List;
  * @createTime : 2024/2/3 19:32
  * @description : 一句话描述该类的功能
  */
+@RequestMapping("/order")
 @Controller
 public class OrderController {
 
